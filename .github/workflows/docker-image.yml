@@ -19,5 +19,6 @@ jobs:
      
     - name: Build and push the Docker image
       run: |
-        docker build . --file Dockerfile --tag kirillvv/lab5_dockerfile_example:$(date +%s)
-        docker push kirillvv/lab5_dockerfile_example:${{ github.sha }}
+        IMAGE_TAG=kirillvv/lab5_dockerfile_example:${{ github.sha }}
+        docker build . --file Dockerfile --tag $IMAGE_TAG
+        docker push $IMAGE_TAG
